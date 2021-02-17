@@ -5,6 +5,14 @@ const pipelines = require('@aws-cdk/pipelines');
 const codepipeline = require('@aws-cdk/aws-codepipeline');
 const codepipelineActions = require('@aws-cdk/aws-codepipeline-actions');
 const { CdkStack } = require('../lib/cdk-stack');
+const ssm = require('@aws-cdk/aws-ssm');
+
+class AppStage extends cdk.Stage {
+  constructor(scope, id, props) {
+    super(scope, id, props);
+    new CdkStack(this, 'cdk-stack');
+  }
+}
 
 class PipelineStack extends cdk.Stack {
   /**
@@ -50,11 +58,10 @@ class PipelineStack extends cdk.Stack {
         },
       }),
     });
+    const productionAccountID = ssm.StringParameter.valueForStringParameter(this, 'mitt-hbg-aws-account-id-production');
+    pipeline.addApplicationStage(new AppStage(this, 'sync-s3', { env: { account: productionAccountID, region: 'eu-north-1' } }));
   }
 }
 
 const app = new cdk.App();
-new PipelineStack(app, 'PipelineTest', {});
-
-// const app = new cdk.App();
-// new CdkStack(app, 'CdkStack');
+new PipelineStack(app, 'PipelineTest', { env: { region: 'eu-north-1' }});

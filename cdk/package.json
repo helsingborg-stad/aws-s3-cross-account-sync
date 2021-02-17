@@ -18,6 +18,7 @@
     "jest": "^26.4.2"
   },
   "dependencies": {
+    "@aws-cdk/aws-ssm": "^1.89.0",
     "@aws-cdk/core": "1.89.0",
     "@aws-sdk/util-arn-parser": "^3.4.1"
   }
