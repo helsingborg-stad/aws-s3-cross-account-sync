@@ -52,6 +52,8 @@ class PipelineStack extends cdk.Stack {
   }
 }
 
-
 const app = new cdk.App();
-new CdkStack(app, 'CdkStack');
+new PipelineStack(app, 'PipelineTest', {});
+
+// const app = new cdk.App();
+// new CdkStack(app, 'CdkStack');
