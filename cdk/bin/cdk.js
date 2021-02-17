@@ -22,8 +22,8 @@ class PipelineStack extends cdk.Stack {
     const cloudAssemblyArtifact = new codepipeline.Artifact();
 
     // Create the CDK pipeline
-    const pipeline = new pipelines.CdkPipeline(this, 'Pipeline', {
-      pipelineName: 'ServerlessPipelineDemo',
+    const pipeline = new pipelines.CdkPipeline(this, 'S3CrossAccountSync', {
+      pipelineName: 'S3CrossAccountSync',
       cloudAssemblyArtifact,
 
       // Checkout source from GitHub
@@ -42,7 +42,7 @@ class PipelineStack extends cdk.Stack {
         sourceArtifact,
         cloudAssemblyArtifact,
         // We override the default install command to prepare our lambda too
-        installCommand: 'npm ci && npm ci --prefix ../lambda',
+        installCommand: 'npm ci && npm ci --prefix lambda',
         // As we may need Docker we create a privileged container
         environment: {
           privileged: true,
