@@ -10,7 +10,7 @@ const ssm = require('@aws-cdk/aws-ssm');
 class AppStage extends cdk.Stage {
   constructor(scope, id, props) {
     super(scope, id, props);
-    new CdkStack(this, 'cdk-stack');
+    new CdkStack(this, 'S3Sync');
   }
 }
 
@@ -59,7 +59,7 @@ class PipelineStack extends cdk.Stack {
       }),
     });
     const productionAccountID = ssm.StringParameter.valueForStringParameter(this, 'mitt-hbg-aws-account-id-production');
-    pipeline.addApplicationStage(new AppStage(this, 'sync-s3', { env: { account: productionAccountID, region: 'eu-north-1' } }));
+    pipeline.addApplicationStage(new AppStage(this, 'DeployProd', { env: { account: 377797220092, region: 'eu-north-1' } }));
   }
 }
 
