@@ -64,4 +64,4 @@ class PipelineStack extends cdk.Stack {
 }
 
 const app = new cdk.App();
-new PipelineStack(app, 'PipelineTest', { env: { region: 'eu-north-1' }});
+new PipelineStack(app, 'S3SyncPipeline', { env: { region: 'eu-north-1' }});
