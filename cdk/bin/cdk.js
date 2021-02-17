@@ -42,7 +42,7 @@ class PipelineStack extends cdk.Stack {
         sourceArtifact,
         cloudAssemblyArtifact,
         // We override the default install command to prepare our lambda too
-        installCommand: 'npm ci --prefix cdk && npm ci --prefix lambda',
+        installCommand: 'npm ci && npm ci --prefix ../lambda',
         // synthCommand: 'cd cdk; npx cdk synth; cd ..;',
         // As we may need Docker we create a privileged container
         subdirectory: 'cdk',
