@@ -31,7 +31,7 @@ class PipelineStack extends cdk.Stack {
         actionName: 'Source',
         connectionArn: cdk.Fn.importValue('github-connection-CodeStarConnection'),
         owner: 'helsingborg-stad',
-        repo: 'aws-cloudformation-templates',
+        repo: 'aws-s3-cross-account-sync',
         branch: 'master',
         output: sourceArtifact,
         runOrder: 1,
@@ -42,7 +42,7 @@ class PipelineStack extends cdk.Stack {
         sourceArtifact,
         cloudAssemblyArtifact,
         // We override the default install command to prepare our lambda too
-        installCommand: 'npm ci && npm ci --prefix lambda',
+        installCommand: 'npm ci --prefix cdk && npm ci --prefix lambda',
         // As we may need Docker we create a privileged container
         environment: {
           privileged: true,
