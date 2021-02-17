@@ -1,0 +1,27 @@
+{
+  "name": "s3-cross-account-sync",
+  "version": "1.0.0",
+  "description": "S3 cross account sync",
+  "repository": "git+https://github.com/helsingborg-stad/helsingborg-io-sls-api.git",
+  "keywords": [],
+  "author": "Helsingborg Stad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helsingborg-stad/aws-cloudformation-templates/issues"
+  },
+  "homepage": "https://github.com/helsingborg-stad/aws-cloudformation-templates/s3-cross-account-sync#readme",
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.841.0"
+  }
+}

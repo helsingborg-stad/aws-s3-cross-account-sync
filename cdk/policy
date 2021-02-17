@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:putObject",
+            "Resource": [
+                "arn:aws:s3:::targethbg/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:getObject",
+            "Resource": [
+                "arn:aws:s3:::sourcehbg/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:eu-north-1:308681762884:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:eu-north-1:308681762884:log-group:/aws/lambda/s3-cross-account-sync:*"
+            ]
+        }
+    ]
+}
